@@ -4,13 +4,13 @@ import {
   Card,
   CardContent,
   Grid,
-  Paper,
   TextField,
   Typography
 } from '@mui/material';
 import { NavLink as RouterLink } from "react-router-dom";
 
 function LgPage() {
+  
   return (
     <>
       <Grid
@@ -18,7 +18,7 @@ function LgPage() {
         direction={'row'}
         justifyContent={'center'}
         alignItems={'stretch'}
-        sx={{ height: '100%' }}
+        sx={{ height: '100%',background:'red' }}
       >
         <Grid item xs={12} md={6} alignItems={'center'}>
          <Grid container

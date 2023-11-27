@@ -6,8 +6,13 @@ import MasterItemAddMoreItem from "../masteritemadd/msitemaddmore";
 import { InputLabelMui } from "../../muicomponent/inputlabel";
 import MSViewTable from "./msitemviewtable";
 import MasterItemViewTitle from "./msitemviewhead";
+import {useState} from "react";
 
 function MasterItemView() {
+  const [pri,setPri]=useState('')
+  const [cur,setCur]=useState('')
+  const [lead,setLead]=useState('')
+  const [his,setHis]=useState('')
   return(
     <>
       <Helmet>
@@ -57,16 +62,16 @@ function MasterItemView() {
                       spacing={1}
                       >
                   <Grid item xs={12} md={6}>
-                    <InputLabelMui labelName={'Price'} enable={'false'} />
+                    <InputLabelMui labelName={'Price'} enable={'false'} setValue={setPri}/>
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <InputLabelMui labelName={'Currency'} enable={'false'} />
+                    <InputLabelMui labelName={'Currency'} enable={'false'} setValue={setCur}/>
                   </Grid>
                   <Grid item xs={12} md={12}>
-                    <InputLabelMui labelName={'Lead time'} enable={'false'} />
+                    <InputLabelMui labelName={'Lead time'} enable={'false'} setValue={setLead}/>
                   </Grid>
                   <Grid item xs={12} md={12}>
-                    <InputLabelMui labelName={'History of price'} enable={'false'} />
+                    <InputLabelMui labelName={'History of price'} enable={'false'} setValue={setHis}/>
                   </Grid>
                 </Grid>
               </CardContent>

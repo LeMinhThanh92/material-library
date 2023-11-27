@@ -1,15 +1,14 @@
 import {Suspense, lazy} from 'react';
 import {Navigate} from 'react-router-dom';
 import {RouteObject} from 'react-router';
+import BaseLayout from "./layouts/BaseLayout";
+import SidebarLayout from "./layouts/SidebarLayout";
 
-import SidebarLayout from 'src/layouts/SidebarLayout';
-import BaseLayout from 'src/layouts/BaseLayout';
 
-import SuspenseLoader from 'src/components/SuspenseLoader';
 
-const Loader = (Component) => (props) =>
+const Loader = (Component:any) => (props:any) =>
     (
-        <Suspense fallback={<SuspenseLoader/>}>
+        <Suspense >
 
                     <Component {...props} />
 
@@ -18,19 +17,19 @@ const Loader = (Component) => (props) =>
     );
 
 
-const LoginPage = Loader(lazy(() => import('src/content/login')));
+const LoginPage = Loader(lazy(() => import('./content/login')));
 
-const MasterItemAdd = Loader(lazy(() => import('src/content/masteritem/masteritemadd')));
-const MasterItemHome = Loader(lazy(() => import('src/content/masteritem/masteritemhome')));
+const MasterItemAdd = Loader(lazy(() => import('./content/masteritem/masteritemadd')));
+const MasterItemHome = Loader(lazy(() => import('./content/masteritem/masteritemhome')));
 
-const MasterItemColorAdd = Loader(lazy(() => import('src/content/masteritemcolor/masteritemcoloradd')));
-const MasterItemColorHome = Loader(lazy(() => import('src/content/masteritemcolor/masteritemcolorhome')));
+const MasterItemColorAdd = Loader(lazy(() => import('./content/masteritemcolor/masteritemcoloradd')));
+const MasterItemColorHome = Loader(lazy(() => import('./content/masteritemcolor/masteritemcolorhome')));
 
-const MasterItemGroupAdd = Loader(lazy(() => import('src/content/masteritemgroup/masteritemgroupadd')));
-const MasterItemGroupHome = Loader(lazy(() => import('src/content/masteritemgroup/masteritemgrouphome')));
+const MasterItemGroupAdd = Loader(lazy(() => import('./content/masteritemgroup/masteritemgroupadd')));
+const MasterItemGroupHome = Loader(lazy(() => import('./content/masteritemgroup/masteritemgrouphome')));
 
-const MasterItemVendorAdd = Loader(lazy(() => import('src/content/masteritemvendor/masteritemvendoradd')));
-const MasterItemVendorHome = Loader(lazy(() => import('src/content/masteritemvendor/masteritemvendorhome')));
+const MasterItemVendorAdd = Loader(lazy(() => import('./content/masteritemvendor/masteritemvendoradd')));
+const MasterItemVendorHome = Loader(lazy(() => import('./content/masteritemvendor/masteritemvendorhome')));
 
 
 

@@ -5,7 +5,7 @@ interface InputLabelProps {
   labelName?: string;
   inputError?: boolean;
   valueName?: string;
-  setValue?: (value: string) => void;
+  setValue: (value: string) => void;
   endAdornment?: any;
   type?: string;
   enable?:any

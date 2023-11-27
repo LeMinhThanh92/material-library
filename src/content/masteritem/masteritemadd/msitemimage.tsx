@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from 'react';
 import { CloudUploadOutlined } from '@mui/icons-material';
 
 function MasterItemImageAdd() {
-  const [imageAdded, setImageAdded] = useState(null);
+  const [imageAdded, setImageAdded] = useState<string>('');
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];

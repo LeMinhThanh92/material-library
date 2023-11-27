@@ -1,7 +1,4 @@
 import React from 'react';
-import { Button } from '@mui/material';
-import { NavLink as RouterLink } from 'react-router-dom';
-import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import LgPage from './loginpage';
 
 const username = 'Thành Thành Thành';
