@@ -18,7 +18,7 @@ function LgPage() {
         direction={'row'}
         justifyContent={'center'}
         alignItems={'stretch'}
-        sx={{ height: '100%',background:'red' }}
+        sx={{ height: '100%'}}
       >
         <Grid item xs={12} md={6} alignItems={'center'}>
          <Grid container
@@ -56,7 +56,7 @@ function LgPage() {
                    fullWidth
                    disableRipple
                    component={RouterLink}
-                   to="/masteritemgroup/masteritemgrouphome"
+                   to="/masteritem"
                    style={{ marginTop: '20px' }}
                  >
                    Login

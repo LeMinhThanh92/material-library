@@ -6,6 +6,7 @@ import HomeDrawer from '@mui/material/Drawer';
 import DrawerAppBar, {AppBarProps as DrawerAppBarProps} from '@mui/material/AppBar';
 import Box from "@mui/material/Box";
 import {
+    Avatar,
     Button,
     CssBaseline,
     Divider,
@@ -14,20 +15,39 @@ import {
     ListItem,
     ListItemButton,
     ListItemIcon,
-    ListItemText,
-    Toolbar,
+    ListItemText, Menu,
+    Toolbar, Tooltip,
     Typography
 } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import {AccountBox as AccountBoxIcon, Home as HomeIcon, LogoutOutlined,} from "@mui/icons-material";
+import {
+    AccountBox as AccountBoxIcon, ColorLensOutlined, FeaturedPlayListOutlined,
+    Home as HomeIcon,
+    LogoutOutlined, OtherHousesOutlined,
+} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu"
+import MenuItem from "@mui/material/MenuItem";
+
+const settings = ['Log out'];
+
 
 const NavigationDrawer = (props: any) => {
     const theme = useTheme()
     // const router = useRouter();
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState("")
+
+    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
     const handleDrawerOpen = () => {
         setOpen(true)
     }
@@ -35,88 +55,135 @@ const NavigationDrawer = (props: any) => {
     const handleDrawerClose = () => {
         setOpen(false)
     }
+    const iconcolor='blue'
 
     const menuItems = [
         {
             text: 'Master Item',
-            icon: <HomeIcon/>,
-            onClick: () => {},
-           to:'../masteritem/masteritemhome'
+            // icon: <HomeIcon sx={{color:iconcolor}}/>,
+            icon: <Avatar sx={{fontSize:'0.5em'}} variant={'square'} src='/static/images/avatars/house.png'/>,
+            onClick: () => {
+                setTitle('Master Item')
+            },
+            to: '../../masteritem'
         },
         {
             text: 'Group',
-            icon: <AccountBoxIcon/>,
-            onClick: () => {},
-            to:'../masteritemgroup/masteritemgrouphome'
+            icon: <Avatar sx={{fontSize:'small'}} variant={'square'} src='/static/images/avatars/groupitem.png'/>,
+            onClick: () => {
+                setTitle('Group')
+            },
+            to: '../../masteritemgroup/'
         },
         {
             text: 'Color',
-            icon: <LogoutOutlined/>,
-            onClick: () => {},
-            to:'../masteritemcolor/masteritemcolorhome'
+            icon: <Avatar sx={{fontSize:'0.5em'}} variant={'square'} src='/static/images/avatars/color.png'/>,
+            onClick: () => {
+                setTitle('Color')
+            },
+            to: '../../masteritemcolor'
         },
         {
             text: 'Vendor',
-            icon: <LogoutOutlined/>,
-            onClick: () => {},
-            to:'../masteritemvendor/masteritemvendorhome'
+            icon: <Avatar sx={{fontSize:'0.5em'}} variant={'square'} src='/static/images/avatars/vendor.png'/>,
+            onClick: () => {
+                setTitle('Vendor')
+            },
+            to: '../../masteritemvendor'
         }
     ];
 
-    return (<Box sx={{display: "flex"}}>
-        <CssBaseline/>
-        <AppBar position={"fixed"} open={open}>
-            <Toolbar>
-                <IconButton
-                    color={"inherit"}
-                    aria-label={"open drawer"}
-                    edge={"start"}
-                    sx={{
-                        marginRight: 5,
-                        ...(open && {display: "none"})
-                    }}
-                    onClick={handleDrawerOpen}>
-                    <MenuIcon/>
-                </IconButton>
-                <Typography variant={"h6"} noWrap component={"div"}>
-                    {title}
-                </Typography>
-            </Toolbar>
-        </AppBar>
-        <Drawer variant={"permanent"} open={open}>
-            <DrawerHeader>
-                <IconButton onClick={handleDrawerClose}>
-                    {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
-                </IconButton>
-            </DrawerHeader>
-            <Divider/>
-            <List>
-                {menuItems.map((item) => (
-                    <ListItem key={item.text} disablePadding sx={{display: "block"}}>
-                        <Link to={item.to} style={{textDecoration:'none',color:'inherit'}}><ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? "initial" : "center",
-                                px: 2.5
+    return (
+        <Box sx={{display: "flex"}}>
+            <CssBaseline/>
+            <AppBar position={"fixed"} open={open}>
+                <Toolbar>
+                    <IconButton
+                        color={"inherit"}
+                        aria-label={"open drawer"}
+                        edge={"start"}
+                        sx={{
+                            ml: 2,
+                            color: 'black',
+                            marginRight: 5,
+                            ...(open && {display: "none"})
+                        }}
+                        onClick={handleDrawerOpen}>
+                        <MenuIcon/>
+                    </IconButton>
+                    <Typography sx={{fontSize: '2em', flexGrow: 1, ml: 2}}>
+                        {title}
+                    </Typography>
+
+                    <Box sx={{flexGrow: 0}}>
+                        <Tooltip title="Open settings">
+                            <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
+                                <Avatar alt="Remy Sharp" src="/static/images/avatars/man.png"/>
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            sx={{mt: '45px'}}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
                             }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            {settings.map((setting) => (
+                                <Link key={setting} to='../login' style={{textDecoration: 'none', color: 'inherit'}}>
+                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">{setting}</Typography>
+                                    </MenuItem></Link>
+                            ))}
+                        </Menu>
+                    </Box>
 
-                            onClick={item.onClick}>
-                            <ListItemIcon sx={{
-                                minWidth: 0,
-                                mr: open ? 3 : "auto"
-                            }}>{item.icon}</ListItemIcon>
-                            <ListItemText primary={item.text} sx={{fontSize:'bold',opacity: open ? 1 : 0}}/>
-                        </ListItemButton></Link>
+                </Toolbar>
+            </AppBar>
 
-                    </ListItem>
-                ))}
-            </List>
-        </Drawer>
-        <Box component="main" sx={{flexGrow: 1, p: 3}}>
-            <DrawerHeader/>
-            {props.children}
+            <Drawer variant={"permanent"} open={open}>
+                <DrawerHeader>
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+                    </IconButton>
+                </DrawerHeader>
+                <Divider/>
+                <List>
+                    {menuItems.map((item) => (
+                        <ListItem key={item.text} disablePadding sx={{display: "block"}}>
+                            <Link to={item.to} style={{textDecoration: 'none', color: 'inherit'}}><ListItemButton
+                                sx={{
+                                    minHeight: 48,
+                                    justifyContent: open ? "initial" : "center",
+                                    px: 2.5
+                                }}
+
+                                onClick={item.onClick}>
+                                <ListItemIcon sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : "auto"
+                                }}>{item.icon}</ListItemIcon>
+                                <ListItemText primary={item.text} sx={{fontSize: 'bold', opacity: open ? 1 : 0}}/>
+                            </ListItemButton></Link>
+
+                        </ListItem>
+                    ))}
+                </List>
+            </Drawer>
+            <Box component="main" sx={{flexGrow: 1, p: 3}}>
+                <DrawerHeader/>
+                {props.children}
+            </Box>
         </Box>
-    </Box>)
+    )
 }
 
 const drawerWidth = 240
