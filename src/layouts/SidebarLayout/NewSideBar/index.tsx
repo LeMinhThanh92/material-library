@@ -34,6 +34,7 @@ const NavigationDrawer = (props: any) => {
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState('Master Item')
 
+
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -57,23 +58,25 @@ const NavigationDrawer = (props: any) => {
         {
             text: 'Master Item',
             // icon: <HomeIcon sx={{color:iconcolor}}/>,
-            icon: <Avatar sx={{width:20,height:20}} variant={'square'} src='/static/images/avatars/house.png'/>,
-            onClick: () => {
+            icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/house.png'/>,
+            onClick: (index: any) => {
                 setTitle('Master Item')
+
             },
             to: '../../masteritem'
         },
         {
-            text: 'Group',
-            icon: <Avatar sx={{width:20,height:20}} variant={'square'} src='/static/images/avatars/groupitem.png'/>,
-            onClick: () => {
+            text: 'Master Item Group',
+            icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/groupitem.png'/>,
+            onClick: (index:any) => {
                 setTitle('Group')
+
             },
             to: '../../masteritemgroup/'
         },
         {
             text: 'Color',
-            icon: <Avatar sx={{width:20,height:20}} variant={'square'} src='/static/images/avatars/color.png'/>,
+            icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/color.png'/>,
             onClick: () => {
                 setTitle('Color')
             },
@@ -81,7 +84,7 @@ const NavigationDrawer = (props: any) => {
         },
         {
             text: 'Vendor',
-            icon: <Avatar sx={{width:20,height:20}} variant={'square'} src='/static/images/avatars/vendor.png'/>,
+            icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/vendor.png'/>,
             onClick: () => {
                 setTitle('Vendor')
             },
@@ -155,20 +158,27 @@ const NavigationDrawer = (props: any) => {
                 <List>
                     {menuItems.map((item) => (
                         <ListItem key={item.text} disablePadding sx={{display: "block"}}>
-                            <Tooltip title={item.text} placement={'right-start'}><Link to={item.to} style={{textDecoration: 'none', color: 'inherit'}}><ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? "initial" : "center",
-                                    px: 2.5
-                                }}
+                            <Tooltip title={item.text} placement={'right-start'}>
+                                <Link to={item.to} style={{textDecoration: 'none', color: 'inherit'}}>
+                                    <ListItemButton
+                                        key={item.text}
+                                        sx={{
+                                            minHeight: 48,
+                                            justifyContent: open ? "initial" : "center",
+                                            px: 2.5,
 
-                                onClick={item.onClick}>
-                                <ListItemIcon sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : "auto"
-                                }}>{item.icon}</ListItemIcon>
-                                <ListItemText primary={item.text} sx={{fontSize: 'bold', opacity: open ? 1 : 0}}/>
-                            </ListItemButton></Link></Tooltip>
+                                        }}
+
+                                        onClick={item.onClick}>
+                                        <ListItemIcon sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : "auto"
+                                        }}>{item.icon}</ListItemIcon>
+                                        <ListItemText primary={item.text}
+                                                      sx={{fontSize: 'bold', opacity: open ? 1 : 0}}/>
+                                    </ListItemButton>
+                                </Link>
+                            </Tooltip>
 
                         </ListItem>
                     ))}

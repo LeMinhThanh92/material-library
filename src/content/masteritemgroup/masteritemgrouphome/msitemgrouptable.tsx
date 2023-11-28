@@ -18,7 +18,7 @@ const rows: GridRowsProp = [
     internalname: '123'
   },
   {
-    id: 1,
+    id: 2,
     vendoraccount: 'Hello',
     name: 'World',
     address: '123',
@@ -32,7 +32,7 @@ const rows: GridRowsProp = [
     internalname: '123'
   },
   {
-    id: 1,
+    id: 3,
     vendoraccount: 'Hello',
     name: 'World',
     address: '123',
@@ -46,7 +46,7 @@ const rows: GridRowsProp = [
     internalname: '123'
   },
   {
-    id: 1,
+    id: 4,
     vendoraccount: 'Hello',
     name: 'World',
     address: '123',

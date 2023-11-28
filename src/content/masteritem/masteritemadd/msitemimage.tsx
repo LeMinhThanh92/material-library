@@ -1,5 +1,4 @@
-import { Avatar, Box, Button, Card, CardContent, IconButton } from '@mui/material';
-import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
+import { Avatar, Box} from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { CloudUploadOutlined } from '@mui/icons-material';
 

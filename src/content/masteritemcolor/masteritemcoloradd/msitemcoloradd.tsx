@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-function MsItemColorAdd_() {
+function MsItemColorAdd() {
   return(
     <>
       <Helmet>
@@ -10,4 +10,4 @@ function MsItemColorAdd_() {
     </>
   )
 }
-export default MsItemColorAdd_;
+export default MsItemColorAdd;

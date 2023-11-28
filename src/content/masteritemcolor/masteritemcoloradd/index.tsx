@@ -1,8 +1,10 @@
-import MsItemColorAdd_ from "./msitemcoloradd";
+import MsItemColorAdd from "./msitemcoloradd";
 
 function MasterItemColorAdd() {
     return(
-       <MsItemColorAdd_ />
+        <>
+            <MsItemColorAdd/>
+        </>
     )
 }
 
