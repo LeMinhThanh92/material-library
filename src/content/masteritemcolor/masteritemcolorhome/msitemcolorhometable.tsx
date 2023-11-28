@@ -63,17 +63,17 @@ const rows: GridRowsProp = [
 
 const columns: GridColDef[] = [
   { field: 'id' , headerClassName: 'col-header'},
-  { field: 'vendoraccount', headerName: 'vendoraccount', width: 150, headerClassName: 'col-header' },
-  { field: 'name', headerName: 'name', width: 150, headerClassName: 'col-header' },
-  { field: 'address', headerName: 'address', width: 150, headerClassName: 'col-header' },
-  { field: 'group', headerName: 'group', width: 150, headerClassName: 'col-header' },
-  { field: 'contactperson', headerName: 'contactperson', width: 150, headerClassName: 'col-header' },
-  { field: 'contactnumber', headerName: 'contactnumber', width: 150, headerClassName: 'col-header' },
-  { field: 'taxid', headerName: 'taxid', width: 150, headerClassName: 'col-header' },
-  { field: 'email', headerName: 'email', width: 150, headerClassName: 'col-header' },
-  { field: 'payment', headerName: 'payment', width: 150, headerClassName: 'col-header' },
-  { field: 'currency', headerName: 'currency', width: 150, headerClassName: 'col-header' },
-  { field: 'internalname', headerName: 'internalname', width: 150 , headerClassName: 'col-header'},
+  { field: 'vendoraccount', headerName: 'vendoraccount', headerClassName: 'col-header',flex:1 },
+  { field: 'name', headerName: 'name',headerClassName: 'col-header',flex:1 },
+  { field: 'address', headerName: 'address',headerClassName: 'col-header',flex:1 },
+  { field: 'group', headerName: 'group', headerClassName: 'col-header',flex:1 },
+  { field: 'contactperson', headerName: 'contactperson',headerClassName: 'col-header',flex:1 },
+  { field: 'contactnumber', headerName: 'contactnumber',headerClassName: 'col-header',flex:1 },
+  { field: 'taxid', headerName: 'taxid',headerClassName: 'col-header',flex:1 },
+  { field: 'email', headerName: 'email', headerClassName: 'col-header',flex:1 },
+  { field: 'payment', headerName: 'payment',headerClassName: 'col-header',flex:1 },
+  { field: 'currency', headerName: 'currency', headerClassName: 'col-header',flex:1 },
+  { field: 'internalname', headerName: 'internalname', headerClassName: 'col-header',flex:1},
 ];
 
 export default function MSColorTable() {

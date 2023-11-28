@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
-import {Link, NavLink as RouterLink} from 'react-router-dom';
+import {useState} from 'react';
+import {Link} from 'react-router-dom';
 import {CSSObject, styled, Theme, useTheme} from '@mui/material/styles';
 import HomeDrawer from '@mui/material/Drawer';
 import DrawerAppBar, {AppBarProps as DrawerAppBarProps} from '@mui/material/AppBar';
 import Box from "@mui/material/Box";
 import {
     Avatar,
-    Button,
+
     CssBaseline,
     Divider,
     IconButton,
@@ -21,11 +21,7 @@ import {
 } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import {
-    AccountBox as AccountBoxIcon, ColorLensOutlined, FeaturedPlayListOutlined,
-    Home as HomeIcon,
-    LogoutOutlined, OtherHousesOutlined,
-} from "@mui/icons-material";
+
 import MenuIcon from "@mui/icons-material/Menu"
 import MenuItem from "@mui/material/MenuItem";
 
@@ -34,9 +30,9 @@ const settings = ['Log out'];
 
 const NavigationDrawer = (props: any) => {
     const theme = useTheme()
-    // const router = useRouter();
+
     const [open, setOpen] = useState(false)
-    const [title, setTitle] = useState("")
+    const [title, setTitle] = useState('Master Item')
 
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -55,13 +51,13 @@ const NavigationDrawer = (props: any) => {
     const handleDrawerClose = () => {
         setOpen(false)
     }
-    const iconcolor='blue'
+
 
     const menuItems = [
         {
             text: 'Master Item',
             // icon: <HomeIcon sx={{color:iconcolor}}/>,
-            icon: <Avatar sx={{fontSize:'0.5em'}} variant={'square'} src='/static/images/avatars/house.png'/>,
+            icon: <Avatar sx={{width:20,height:20}} variant={'square'} src='/static/images/avatars/house.png'/>,
             onClick: () => {
                 setTitle('Master Item')
             },
@@ -69,7 +65,7 @@ const NavigationDrawer = (props: any) => {
         },
         {
             text: 'Group',
-            icon: <Avatar sx={{fontSize:'small'}} variant={'square'} src='/static/images/avatars/groupitem.png'/>,
+            icon: <Avatar sx={{width:20,height:20}} variant={'square'} src='/static/images/avatars/groupitem.png'/>,
             onClick: () => {
                 setTitle('Group')
             },
@@ -77,7 +73,7 @@ const NavigationDrawer = (props: any) => {
         },
         {
             text: 'Color',
-            icon: <Avatar sx={{fontSize:'0.5em'}} variant={'square'} src='/static/images/avatars/color.png'/>,
+            icon: <Avatar sx={{width:20,height:20}} variant={'square'} src='/static/images/avatars/color.png'/>,
             onClick: () => {
                 setTitle('Color')
             },
@@ -85,7 +81,7 @@ const NavigationDrawer = (props: any) => {
         },
         {
             text: 'Vendor',
-            icon: <Avatar sx={{fontSize:'0.5em'}} variant={'square'} src='/static/images/avatars/vendor.png'/>,
+            icon: <Avatar sx={{width:20,height:20}} variant={'square'} src='/static/images/avatars/vendor.png'/>,
             onClick: () => {
                 setTitle('Vendor')
             },
@@ -159,7 +155,7 @@ const NavigationDrawer = (props: any) => {
                 <List>
                     {menuItems.map((item) => (
                         <ListItem key={item.text} disablePadding sx={{display: "block"}}>
-                            <Link to={item.to} style={{textDecoration: 'none', color: 'inherit'}}><ListItemButton
+                            <Tooltip title={item.text} placement={'right-start'}><Link to={item.to} style={{textDecoration: 'none', color: 'inherit'}}><ListItemButton
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? "initial" : "center",
@@ -172,7 +168,7 @@ const NavigationDrawer = (props: any) => {
                                     mr: open ? 3 : "auto"
                                 }}>{item.icon}</ListItemIcon>
                                 <ListItemText primary={item.text} sx={{fontSize: 'bold', opacity: open ? 1 : 0}}/>
-                            </ListItemButton></Link>
+                            </ListItemButton></Link></Tooltip>
 
                         </ListItem>
                     ))}

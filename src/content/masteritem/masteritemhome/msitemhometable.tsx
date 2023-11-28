@@ -42,11 +42,11 @@ const rows: GridRowsProp = [
 ];
 
 const columns: GridColDef[] = [
-  { field: 'id' , headerClassName: 'col-header',width:100,hideable:true,flex:1},
-  { field: 'masteritemid', headerName: 'masteritemid', width: 150, headerClassName: 'col-header',flex:1 },
-  { field: 'name', headerName: 'name', width: 150, headerClassName: 'col-header',flex:1 },
-  { field: 'description', headerName: 'description', width: 150, headerClassName: 'col-header',flex:1 },
-  { field: 'masteritemgroup', headerName: 'masteritemgroup', width: 150, headerClassName: 'col-header',flex:1 },
+  { field: 'id' , headerClassName: 'col-header',hideable:true,flex:1},
+  { field: 'masteritemid', headerName: 'masteritemid', headerClassName: 'col-header',flex:1 },
+  { field: 'name', headerName: 'name', headerClassName: 'col-header',flex:1 },
+  { field: 'description', headerName: 'description',headerClassName: 'col-header',flex:1 },
+  { field: 'masteritemgroup', headerName: 'masteritemgroup', headerClassName: 'col-header',flex:1 },
 ];
 
 export default function MSTable() {

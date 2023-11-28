@@ -18,14 +18,14 @@ function LgPage() {
         direction={'row'}
         justifyContent={'center'}
         alignItems={'stretch'}
-        sx={{ height: '100%'}}
+        sx={{ height: '100vh'}}
       >
         <Grid item xs={12} md={6} alignItems={'center'}>
          <Grid container
                direction={'row'}
                justifyContent={'center'}
                alignItems={'center'}
-               sx={{height:'100%'}}
+               sx={{height:'100vh'}}
                >
            <Grid item xs={12} md={6} justifyContent={'center'} alignItems={'center'}>
              <Card>

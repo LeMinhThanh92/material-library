@@ -1,5 +1,4 @@
 import {Suspense, lazy} from 'react';
-import {Navigate} from 'react-router-dom';
 import {RouteObject} from 'react-router';
 import BaseLayout from "./layouts/BaseLayout";
 import SidebarLayout from "./layouts/SidebarLayout";
@@ -9,13 +8,9 @@ import SidebarLayout from "./layouts/SidebarLayout";
 const Loader = (Component:any) => (props:any) =>
     (
         <Suspense >
-
                     <Component {...props} />
-
-
         </Suspense>
     );
-
 
 const LoginPage = Loader(lazy(() => import('./content/login')));
 

@@ -25,7 +25,7 @@ function MSItemVenderHome() {
           <Card>
             <CardContent>
               <Typography variant={'h4'} component={'h4'} gutterBottom>
-                Vender Home
+                Vendor Home
               </Typography>
             </CardContent>
           </Card>
@@ -72,9 +72,7 @@ function MSItemVenderHome() {
           </Card>
         </Grid>
         <Grid item xs={12} md={12}>
-
               <VendorTable />
-
         </Grid>
       </Grid>
     </>
