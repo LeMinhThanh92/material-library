@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import {
   Card,
   CardContent,
@@ -25,9 +24,6 @@ function MSItemGroupAdd() {
   
   return(
     <>
-      <Helmet>
-        <title>Add Master Item Group</title>
-      </Helmet>
       <Grid
         sx={{ mt: 1 }}
         container

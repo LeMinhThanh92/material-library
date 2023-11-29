@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {useContext, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import {CSSObject, styled, Theme, useTheme} from '@mui/material/styles';
 import HomeDrawer from '@mui/material/Drawer';
 import DrawerAppBar, {AppBarProps as DrawerAppBarProps} from '@mui/material/AppBar';
 import Box from "@mui/material/Box";
 import {
-    Avatar,
+    Avatar, ButtonGroup,
 
     CssBaseline,
     Divider,
@@ -24,12 +24,16 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import MenuIcon from "@mui/icons-material/Menu"
 import MenuItem from "@mui/material/MenuItem";
+import {DarkModeOutlined, LightModeOutlined, LogoutOutlined} from "@mui/icons-material";
+import {ColorModeContext} from "../../../App";
 
-const settings = ['Log out'];
+
 
 
 const NavigationDrawer = (props: any) => {
+    const colorMode = useContext(ColorModeContext);
     const theme = useTheme()
+    const  navigate=useNavigate()
 
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState('Master Item')
@@ -53,42 +57,34 @@ const NavigationDrawer = (props: any) => {
         setOpen(false)
     }
 
+    const settings = [
+        {
+            text: 'Log out',
+            icon: <LogoutOutlined fontSize={'small'}/>,
+            to:'/login'
+        }
+    ];
 
     const menuItems = [
         {
             text: 'Master Item',
-            // icon: <HomeIcon sx={{color:iconcolor}}/>,
             icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/house.png'/>,
-            onClick: (index: any) => {
-                setTitle('Master Item')
-
-            },
-            to: '../../masteritem'
+            to: '/ms/home'
         },
         {
             text: 'Master Item Group',
             icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/groupitem.png'/>,
-            onClick: (index:any) => {
-                setTitle('Group')
-
-            },
-            to: '../../masteritemgroup/'
+            to: '/msg/home'
         },
         {
             text: 'Color',
             icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/color.png'/>,
-            onClick: () => {
-                setTitle('Color')
-            },
-            to: '../../masteritemcolor'
+            to: '/cl/home'
         },
         {
             text: 'Vendor',
             icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/vendor.png'/>,
-            onClick: () => {
-                setTitle('Vendor')
-            },
-            to: '../../masteritemvendor'
+            to: '/vd/home'
         }
     ];
 
@@ -103,17 +99,26 @@ const NavigationDrawer = (props: any) => {
                         edge={"start"}
                         sx={{
                             ml: 2,
-                            color: 'black',
                             marginRight: 5,
                             ...(open && {display: "none"})
                         }}
                         onClick={handleDrawerOpen}>
                         <MenuIcon/>
                     </IconButton>
-                    <Typography sx={{fontSize: '2em', flexGrow: 1, ml: 2}}>
+                    <Typography sx={{fontSize: '2em', flexGrow: 1, ml: 1}}>
                         {title}
                     </Typography>
-
+                    <Box sx={{flexGrow:0}}>
+                        <ButtonGroup
+                            disableElevation
+                            variant="contained"
+                            aria-label="Disabled elevation buttons"
+                        >
+                            <IconButton sx={{width:32,height:32,mr:2,backgroundColor:'white',color:'black',fontSize:'small'}} onClick={()=>{colorMode.toggleColorMode()}}>
+                                {theme.palette.mode==='dark' ? <LightModeOutlined /> : <DarkModeOutlined />}
+                            </IconButton>
+                        </ButtonGroup>
+                    </Box>
                     <Box sx={{flexGrow: 0}}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
@@ -137,10 +142,20 @@ const NavigationDrawer = (props: any) => {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <Link key={setting} to='../login' style={{textDecoration: 'none', color: 'inherit'}}>
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">{setting}</Typography>
-                                    </MenuItem></Link>
+                                    <MenuItem key={setting.text} onClick={handleCloseUserMenu}>
+                                        <ListItemIcon onClick={()=>{navigate(setting.to)}}>
+                                            {setting.icon}
+                                        </ListItemIcon>
+                                        <ListItemText primary={setting.text}
+                                                      onClick={()=>{navigate(setting.to)}}
+                                                      primaryTypographyProps={{
+                                                          // color: '#5586B0',
+                                                          fontWeight: 'normal',
+                                                          variant: 'body2',
+                                                      }}/>
+
+                                    </MenuItem>
+
                             ))}
                         </Menu>
                     </Box>
@@ -159,25 +174,28 @@ const NavigationDrawer = (props: any) => {
                     {menuItems.map((item) => (
                         <ListItem key={item.text} disablePadding sx={{display: "block"}}>
                             <Tooltip title={item.text} placement={'right-start'}>
-                                <Link to={item.to} style={{textDecoration: 'none', color: 'inherit'}}>
+
                                     <ListItemButton
                                         key={item.text}
                                         sx={{
-                                            minHeight: 48,
+                                            maxHeight: 35,
                                             justifyContent: open ? "initial" : "center",
                                             px: 2.5,
-
                                         }}
-
-                                        onClick={item.onClick}>
+                                        onClick={()=>{setTitle(item.text); navigate(item.to)}}>
                                         <ListItemIcon sx={{
                                             minWidth: 0,
                                             mr: open ? 3 : "auto"
                                         }}>{item.icon}</ListItemIcon>
                                         <ListItemText primary={item.text}
-                                                      sx={{fontSize: 'bold', opacity: open ? 1 : 0}}/>
+                                                      sx={{opacity: open ? 1 : 0}}
+                                                      primaryTypographyProps={{
+                                                          // color: '#5586B0',
+                                                          fontWeight: 'normal',
+                                                          variant: 'body2',
+                                                      }}/>
                                     </ListItemButton>
-                                </Link>
+
                             </Tooltip>
 
                         </ListItem>

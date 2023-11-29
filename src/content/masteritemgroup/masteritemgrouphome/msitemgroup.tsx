@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
 import { ControlPointOutlined, FileUploadOutlined, ModeEditOutlined } from "@mui/icons-material";
 import MSGroupTable from "./msitemgrouptable";
@@ -6,9 +5,6 @@ import MSGroupTable from "./msitemgrouptable";
 function MSItemGroupHome() {
   return(
     <>
-      <Helmet>
-        <title>Master Item Group Home</title>
-      </Helmet>
       <Grid
         sx={{ mt: 1 }}
         container

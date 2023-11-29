@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
 import { ControlPointOutlined, FileUploadOutlined, ModeEditOutlined } from "@mui/icons-material";
 import MSColorTable from "./msitemcolorhometable";
@@ -6,9 +5,6 @@ import MSColorTable from "./msitemcolorhometable";
 function MSItemColorHome() {
   return(
     <>
-      <Helmet>
-        <title>Color Home</title>
-      </Helmet>
       <Grid
         sx={{ mt: 1 }}
         container

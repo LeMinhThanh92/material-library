@@ -7,10 +7,10 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import { NavLink as RouterLink } from "react-router-dom";
+import {NavLink as RouterLink, useNavigate} from "react-router-dom";
 
 function LgPage() {
-  
+  const navigate = useNavigate();
   return (
     <>
       <Grid
@@ -55,9 +55,10 @@ function LgPage() {
                    color="primary"
                    fullWidth
                    disableRipple
-                   component={RouterLink}
-                   to="/masteritem"
+                   // component={RouterLink}
+                   // to="/masteritem"
                    style={{ marginTop: '20px' }}
+                  onClick={()=>{navigate('/ms/home')}}
                  >
                    Login
                  </Button>

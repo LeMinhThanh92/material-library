@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { Button, Card, CardContent, Grid, Typography } from '@mui/material';
 import {
   ControlPointOutlined,
@@ -10,9 +9,6 @@ import VendorTable from './msitemvendortable';
 function MSItemVenderHome() {
   return (
     <>
-      <Helmet>
-        <title>Vendor Home</title>
-      </Helmet>
       <Grid
         sx={{ mt: 1 }}
         container

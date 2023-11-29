@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
 import { MuiAutocomplete } from "../../muicomponent/autocomplete";
 import { InputLabelMui } from "../../muicomponent/inputlabel";
@@ -11,10 +10,6 @@ function MSVenderAdd() {
   const [vemail,setVEmail]=useState('')
   return (
     <>
-      <Helmet>
-        <title>Add Vender</title>
-      </Helmet>
-
       <Card sx={{mt:3}}>
         <CardContent>
         <Grid

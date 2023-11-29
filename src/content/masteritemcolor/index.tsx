@@ -4,8 +4,9 @@ import {useState} from "react";
 import Tab from "@mui/material/Tab";
 import MasterItemColorHome from "./masteritemcolorhome";
 import MasterItemColorAdd from "./masteritemcoloradd";
+import {Helmet} from "react-helmet-async";
 
-function MSColordasboard() {
+function MSColorDasboard() {
     const [value, setValue] = useState('1');
 
     const handleChange = (e:React.SyntheticEvent, newValue: string) => {
@@ -14,18 +15,20 @@ function MSColordasboard() {
 
 
     return(
-        <Box sx={{ width: '100%', typography: 'body1' }}>
+        <>
+            <Helmet><title>Color</title></Helmet>
+            <Box sx={{width: '100%', typography: 'body1'}}>
             <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                     <TabList onChange={handleChange} aria-label='Tab MasterItem'>
-                        <Tab label="MS Dashboad" value="1" />
-                        <Tab label="Add" value="2" />
+                        <Tab label="MS Dashboad" value="1"/>
+                        <Tab label="Add" value="2"/>
                     </TabList>
                 </Box>
                 <TabPanel value="1"> <MasterItemColorHome/> </TabPanel>
-                <TabPanel value="2"><MasterItemColorAdd /> </TabPanel>
+                <TabPanel value="2"><MasterItemColorAdd/> </TabPanel>
             </TabContext>
-        </Box>
+        </Box></>
     )
 }
-export default MSColordasboard;
+export default MSColorDasboard;

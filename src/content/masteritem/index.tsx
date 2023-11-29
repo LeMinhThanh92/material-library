@@ -4,8 +4,9 @@ import {useState} from "react";
 import Tab from "@mui/material/Tab";
 import MasterItemHome from "./masteritemhome";
 import MasterItemAdd from "./masteritemadd";
+import {Helmet} from "react-helmet-async";
 
-function MSdasboard() {
+function MSDasboard() {
     const [value, setValue] = useState('1');
 
     const handleChange = (e: React.SyntheticEvent, newValue: string) => {
@@ -14,7 +15,10 @@ function MSdasboard() {
 
 
     return (
-        <Box sx={{width: '100%', typography: 'body1'}}>
+
+        <>
+            <Helmet><title>Master Item</title></Helmet>
+            <Box sx={{width: '100%', typography: 'body1'}}>
             <TabContext value={value}>
                 <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                     <TabList onChange={handleChange} aria-label='Tab MasterItem'>
@@ -23,12 +27,13 @@ function MSdasboard() {
                     </TabList>
                 </Box>
                 <TabPanel value="1">
-                            <MasterItemHome/>
+                    <MasterItemHome/>
                 </TabPanel>
                 <TabPanel value="2"><MasterItemAdd/> </TabPanel>
             </TabContext>
         </Box>
+        </>
     )
 }
 
-export default MSdasboard;
+export default MSDasboard;

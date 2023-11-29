@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { Card, CardContent, Grid } from '@mui/material';
 import MasterItemCreateTitle from './msitemadd';
 import MasterItemImageAdd from './msitemimage';
@@ -8,9 +7,6 @@ import MasterItemAddMoreItem from "./msitemaddmore";
 function MasterItemAdd() {
   return (
     <>
-      <Helmet>
-        <title>Add Master Item</title>
-      </Helmet>
 
         <Grid
           container
