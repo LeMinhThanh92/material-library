@@ -95,7 +95,7 @@ export default function VendorTable() {
       },
       '& .col-header': {
         backgroundColor: "#3C7363",
-        color:'black'
+
       },
     }}>
       <DataGrid

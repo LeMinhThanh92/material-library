@@ -1,6 +1,25 @@
-import { Paper } from "@mui/material";
-import { DataGrid, GridRowsProp, GridColDef, GridToolbar } from "@mui/x-data-grid";
+import {Button, Paper} from "@mui/material";
+import {
+  DataGrid,
+  GridRowsProp,
+  GridColDef,
+  GridToolbarColumnsButton,
+  GridToolbarContainer, GridToolbarQuickFilter
+} from "@mui/x-data-grid";
 import { useState } from 'react';
+import {ImportExportOutlined} from "@mui/icons-material";
+
+
+
+function CustomToolbar() {
+  return (
+      <GridToolbarContainer>
+        <GridToolbarColumnsButton />
+        <GridToolbarQuickFilter />
+        <Button variant={'text'} endIcon={<ImportExportOutlined />}>Export excel</Button>
+      </GridToolbarContainer>
+  );
+}
 
 const rows: GridRowsProp = [
   {
@@ -77,7 +96,7 @@ export default function MSTable() {
           paginationModel={paginationModel}
           rowCount={rows.length}
           slots={{
-            toolbar: GridToolbar,
+            toolbar: CustomToolbar,
           }}
           onPaginationModelChange={(model) => {
             console.log('Model change:', model);

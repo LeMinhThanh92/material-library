@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import MasterItemHome from "./masteritemhome";
 import MasterItemAdd from "./masteritemadd";
 import {Helmet} from "react-helmet-async";
+import MasterItemCompare from "./msitemcompare";
 
 function MSDasboard() {
     const [value, setValue] = useState('1');
@@ -24,12 +25,18 @@ function MSDasboard() {
                     <TabList onChange={handleChange} aria-label='Tab MasterItem'>
                         <Tab label="MS Dashboad" value="1"/>
                         <Tab label="Add" value="2"/>
+                        <Tab label="Compare" value="3"/>
                     </TabList>
                 </Box>
                 <TabPanel value="1">
                     <MasterItemHome/>
                 </TabPanel>
-                <TabPanel value="2"><MasterItemAdd/> </TabPanel>
+                <TabPanel value="2">
+                    <MasterItemAdd/>
+                </TabPanel>
+                <TabPanel value="3">
+                    <MasterItemCompare/>
+                </TabPanel>
             </TabContext>
         </Box>
         </>

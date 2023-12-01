@@ -7,7 +7,7 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import {NavLink as RouterLink, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function LgPage() {
   const navigate = useNavigate();

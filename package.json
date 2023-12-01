@@ -14,6 +14,7 @@
     "@types/node": "^20.8.10",
     "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",
+    "notistack": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
@@ -48,6 +49,8 @@
   "devDependencies": {
     "@mui/lab": "^5.0.0-alpha.153",
     "@mui/x-data-grid": "^6.18.2",
+    "@mui/x-date-pickers": "^6.18.2",
+    "dayjs": "^1.11.10",
     "react-helmet-async": "^2.0.1",
     "src": "^1.1.2",
     "tailwindcss": "^3.3.5"
