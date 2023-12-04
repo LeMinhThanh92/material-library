@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
+import { FormControl, InputLabel,  OutlinedInput} from "@mui/material";
 
 interface InputLabelProps {
   id?: string;
@@ -9,17 +9,21 @@ interface InputLabelProps {
   endAdornment?: any;
   type?: string;
   enable?:any
+  rownum?:number
+  multiline?:boolean
 }
 
+export function InputLabelMui({ id, labelName, inputError, valueName, setValue, endAdornment, type,enable,rownum,multiline }: InputLabelProps) {
 
-export function InputLabelMui({ id, labelName, inputError, valueName, setValue, endAdornment, type,enable }: InputLabelProps) {
-
-  return (
+    return (
     <FormControl fullWidth>
       <InputLabel htmlFor={id} error={inputError}>
         {labelName}
       </InputLabel>
       <OutlinedInput fullWidth
+                     sx={{ borderRadius:'16px' }}
+                     rows={rownum}
+                     multiline={multiline}
                      id={id}
                      value={valueName}
                      label={labelName}

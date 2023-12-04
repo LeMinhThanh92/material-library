@@ -72,7 +72,7 @@ function LgPage() {
             variant={'square'}
             alt={'Login'}
             src={'/static/images/avatars/office.JPG'}
-            sx={{ height: '100%', width: '100%' }}
+            sx={{ height: '100%', width: '100%',borderRadius: '16px 0 0 10px' }}
           />
         </Grid>
       </Grid>

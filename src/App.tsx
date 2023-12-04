@@ -34,7 +34,7 @@ export default function App() {
             createTheme({
                 palette: {
                     primary: {
-                        main: blue[500]
+                        main: blue[500],
                     },
                     mode,
                     ...(mode === 'dark'
@@ -52,9 +52,13 @@ export default function App() {
                         }
                         : {}),
                 },
+                typography: {
+                    fontSize: 12,
+                },
             }),
-        [mode],
+        [mode]
     );
+
 
     return (
         <ColorModeContext.Provider value={colorMode}>

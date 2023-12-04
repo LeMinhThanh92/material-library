@@ -11,6 +11,7 @@ import MSTable from "../masteritemhome/msitemhometable";
 import FilterTable from "./filter";
 import MuiTransferList from "./transferlist";
 import {useSnackbar, VariantType} from "notistack";
+import DraggableCard from "./draggable";
 
 function MSCompare() {
     const { enqueueSnackbar } = useSnackbar();
@@ -78,6 +79,9 @@ function MSCompare() {
                 </Grid>
                 <Grid item xs={12} md={12}>
                     <Button onClick={handleClickVariant('error','DATAAAA')}>Show success snackbar</Button>
+                </Grid>
+                <Grid item xs={12} md={12}>
+                    <DraggableCard />
                 </Grid>
             </Grid>
         </>
