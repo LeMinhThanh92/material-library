@@ -21,7 +21,7 @@ export function InputLabelMui({ id, labelName, inputError, valueName, setValue, 
         {labelName}
       </InputLabel>
       <OutlinedInput fullWidth
-                     sx={{ borderRadius:'16px' }}
+                     sx={{ borderRadius:'16px',background:'initial' }}
                      rows={rownum}
                      multiline={multiline}
                      id={id}
@@ -32,6 +32,7 @@ export function InputLabelMui({ id, labelName, inputError, valueName, setValue, 
                      error={inputError}
                      type={type}
                      disabled={enable}
+
       />
     </FormControl>
 

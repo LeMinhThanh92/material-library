@@ -6,14 +6,15 @@ import MasterItemHome from "./masteritemhome";
 import MasterItemAdd from "./masteritemadd";
 import {Helmet} from "react-helmet-async";
 import MasterItemCompare from "./msitemcompare";
+import StackedBarChart from "./msitemcompare/barchart";
 
 function MSDasboard() {
+
     const [value, setValue] = useState('1');
 
     const handleChange = (e: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
     };
-
 
     return (
 
@@ -44,3 +45,4 @@ function MSDasboard() {
 }
 
 export default MSDasboard;
+

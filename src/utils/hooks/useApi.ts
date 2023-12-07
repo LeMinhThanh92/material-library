@@ -2,7 +2,7 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 
 const api = (params? : any, basePath: string = "") => axios.create({
-    baseURL: "http://localhost:8080" + basePath,
+    baseURL: "http://192.168.14.15:8180/" + basePath,
     params: params,
     headers: {
         'Content-Type': 'application/json',

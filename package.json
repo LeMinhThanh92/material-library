@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@mui/lab": "^5.0.0-alpha.153",
+    "@mui/x-charts": "^6.18.3",
     "@mui/x-data-grid": "^6.18.2",
     "@mui/x-date-pickers": "^6.18.2",
     "@types/react-dnd": "^3.0.2",

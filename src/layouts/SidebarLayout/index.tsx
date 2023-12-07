@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Outlet } from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 
 import NavigationDrawer from "./NewSideBar";
 
@@ -8,8 +8,9 @@ interface SidebarLayoutProps {
 }
 
 const SidebarLayout: FC<SidebarLayoutProps> = () => {
-
   return (
+
+
     <>
           <NavigationDrawer>
               <Outlet />

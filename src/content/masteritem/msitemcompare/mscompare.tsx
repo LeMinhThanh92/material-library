@@ -42,7 +42,7 @@ function MSCompare() {
                                     <MuiAutocomplete labelname={'Input Master Item code'}/>
                                 </Grid>
                                 <Grid item xs={12} md={1}>
-                                   <Button fullWidth variant={'contained'} sx={{height:56}} endIcon={<AddOutlined />}>
+                                   <Button fullWidth variant={'contained'} sx={{height:52}} endIcon={<AddOutlined />}>
                                        Add
                                    </Button>
                                 </Grid>
@@ -50,7 +50,7 @@ function MSCompare() {
                                     <MuiAutocomplete labelname={'Options'}/>
                                 </Grid>
                                 <Grid item xs={12} md={1.5}>
-                                    <Button fullWidth variant={'contained'} sx={{height:56}} endIcon={<SearchOutlined />}>
+                                    <Button fullWidth variant={'contained'} sx={{height:52}} endIcon={<SearchOutlined />}>
                                         Find Similar
                                     </Button>
                                 </Grid>
@@ -83,6 +83,7 @@ function MSCompare() {
                 <Grid item xs={12} md={12}>
                     <DraggableCard />
                 </Grid>
+
             </Grid>
         </>
     )

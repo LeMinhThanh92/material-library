@@ -15,7 +15,7 @@ import {
     ListItem,
     ListItemButton,
     ListItemIcon,
-    ListItemText, Menu,
+    ListItemText, Menu, Stack,
     Toolbar, Tooltip,
     Typography
 } from "@mui/material";
@@ -28,12 +28,17 @@ import {DarkModeOutlined, LightModeOutlined, LogoutOutlined} from "@mui/icons-ma
 import {ColorModeContext} from "../../../App";
 
 
-
-
+let userData:any
 const NavigationDrawer = (props: any) => {
+
+    const storedUserData = localStorage.getItem('user');
+    if (storedUserData) {
+        userData = JSON.parse(storedUserData);
+    }
+
     const colorMode = useContext(ColorModeContext);
     const theme = useTheme()
-    const  navigate=useNavigate()
+    const navigate = useNavigate()
 
     const [open, setOpen] = useState(false)
     const [title, setTitle] = useState('Master Item')
@@ -61,7 +66,7 @@ const NavigationDrawer = (props: any) => {
         {
             text: 'Log out',
             icon: <LogoutOutlined fontSize={'small'}/>,
-            to:'/login'
+            to: '/login'
         }
     ];
 
@@ -85,6 +90,11 @@ const NavigationDrawer = (props: any) => {
             text: 'Vendor',
             icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/vendor.png'/>,
             to: '/vd/home'
+        },
+        {
+            text: 'TESTDATA',
+            icon: <Avatar sx={{width: 20, height: 20}} variant={'square'} src='/static/images/avatars/vendor.png'/>,
+            to: '/ts/tsdata'
         }
     ];
 
@@ -108,22 +118,38 @@ const NavigationDrawer = (props: any) => {
                     <Typography sx={{fontSize: '2em', flexGrow: 1, ml: 1}}>
                         {title}
                     </Typography>
-                    <Box sx={{flexGrow:0}}>
+                    <Box sx={{flexGrow: 0}}>
                         <ButtonGroup
                             disableElevation
                             variant="contained"
                             aria-label="Disabled elevation buttons"
                         >
-                            <IconButton sx={{width:32,height:32,mr:2,backgroundColor:'white',color:'black',fontSize:'small'}} onClick={()=>{colorMode.toggleColorMode()}}>
-                                {theme.palette.mode==='dark' ? <LightModeOutlined /> : <DarkModeOutlined />}
+                            <IconButton sx={{
+                                width: 32,
+                                height: 32,
+                                mr: 2,
+                                backgroundColor: 'white',
+                                color: 'black',
+                                fontSize: 'small'
+                            }} onClick={() => {
+                                colorMode.toggleColorMode()
+                            }}>
+                                {theme.palette.mode === 'dark' ? <LightModeOutlined/> : <DarkModeOutlined/>}
                             </IconButton>
                         </ButtonGroup>
                     </Box>
                     <Box sx={{flexGrow: 0}}>
                         <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatars/man.png"/>
-                            </IconButton>
+                            <Box>
+                                <Stack direction={'row'} spacing={1} onClick={handleOpenUserMenu}>
+                                    <IconButton sx={{p: 0}}>
+                                        <Avatar alt="Image" src="/static/images/avatars/man.png"/>
+                                    </IconButton>
+                                    <Typography justifyContent={'center'} alignItems={'center'} display={'flex'}>
+                                        {userData.accountName}
+                                    </Typography>
+                                </Stack>
+                            </Box>
                         </Tooltip>
                         <Menu
                             sx={{mt: '45px'}}
@@ -142,19 +168,22 @@ const NavigationDrawer = (props: any) => {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                    <MenuItem key={setting.text} onClick={handleCloseUserMenu}>
-                                        <ListItemIcon onClick={()=>{navigate(setting.to)}}>
-                                            {setting.icon}
-                                        </ListItemIcon>
-                                        <ListItemText primary={setting.text}
-                                                      onClick={()=>{navigate(setting.to)}}
-                                                      primaryTypographyProps={{
-                                                          // color: '#5586B0',
-                                                          fontWeight: 'normal',
-                                                          variant: 'body2',
-                                                      }}/>
+                                <MenuItem key={setting.text} onClick={handleCloseUserMenu}>
+                                    <ListItemIcon onClick={() => {
+                                        navigate(setting.to)
+                                    }}>
+                                        {setting.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={setting.text}
+                                                  onClick={() => {
+                                                      navigate(setting.to)
+                                                  }}
+                                                  primaryTypographyProps={{
+                                                      fontWeight: 'normal',
+                                                      variant: 'body2',
+                                                  }}/>
 
-                                    </MenuItem>
+                                </MenuItem>
 
                             ))}
                         </Menu>
@@ -175,26 +204,29 @@ const NavigationDrawer = (props: any) => {
                         <ListItem key={item.text} disablePadding sx={{display: "block"}}>
                             <Tooltip title={item.text} placement={'right-start'}>
 
-                                    <ListItemButton
-                                        key={item.text}
-                                        sx={{
-                                            maxHeight: 35,
-                                            justifyContent: open ? "initial" : "center",
-                                            px: 2.5,
-                                        }}
-                                        onClick={()=>{setTitle(item.text); navigate(item.to)}}>
-                                        <ListItemIcon sx={{
-                                            minWidth: 0,
-                                            mr: open ? 3 : "auto"
-                                        }}>{item.icon}</ListItemIcon>
-                                        <ListItemText primary={item.text}
-                                                      sx={{opacity: open ? 1 : 0}}
-                                                      primaryTypographyProps={{
-                                                          // color: '#5586B0',
-                                                          fontWeight: 'normal',
-                                                          variant: 'body2',
-                                                      }}/>
-                                    </ListItemButton>
+                                <ListItemButton
+                                    key={item.text}
+                                    sx={{
+                                        maxHeight: 35,
+                                        justifyContent: open ? "initial" : "center",
+                                        px: 2.5,
+                                    }}
+                                    onClick={() => {
+                                        setTitle(item.text);
+                                        navigate(item.to)
+                                    }}>
+                                    <ListItemIcon sx={{
+                                        minWidth: 0,
+                                        mr: open ? 3 : "auto"
+                                    }}>{item.icon}</ListItemIcon>
+                                    <ListItemText primary={item.text}
+                                                  sx={{opacity: open ? 1 : 0}}
+                                                  primaryTypographyProps={{
+                                                      // color: '#5586B0',
+                                                      fontWeight: 'normal',
+                                                      variant: 'body2',
+                                                  }}/>
+                                </ListItemButton>
 
                             </Tooltip>
 
